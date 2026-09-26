@@ -531,50 +531,378 @@ function HowItWorks() {
 }
 
 function Features() {
-  const features = [
-    { icon: <Brain className="w-6 h-6" />, title: "AI Opportunity Matching", desc: "Analyze opportunities against your profile and skills instantly.", colSpan: "md:col-span-2", rowSpan: "md:row-span-2" },
-    { icon: <Target className="w-6 h-6" />, title: "Smart Analysis", desc: "Understand requirements, strengths, gaps and project complexity.", colSpan: "md:col-span-1", rowSpan: "md:row-span-1" },
-    { icon: <FileText className="w-6 h-6" />, title: "AI Proposal Generator", desc: "Generate proposal drafts based on the opportunity and your profile.", colSpan: "md:col-span-1", rowSpan: "md:row-span-1" },
-    { icon: <Briefcase className="w-6 h-6" />, title: "Opportunity Management", desc: "Save, organize and prioritize the best opportunities easily.", colSpan: "md:col-span-1", rowSpan: "md:row-span-1" },
-    { icon: <CheckCircle2 className="w-6 h-6" />, title: "Application Tracker", desc: "Track opportunities from saved to completed in one dashboard.", colSpan: "md:col-span-2", rowSpan: "md:row-span-1" },
-    { icon: <LineChart className="w-6 h-6" />, title: "Analytics", desc: "Understand your applications, match rates and performance.", colSpan: "md:col-span-3", rowSpan: "md:row-span-1" },
-  ];
-
   return (
-    <section id="features" className="py-24 bg-[#407E8C]/30 border-y border-[#407E8C]/50 overflow-hidden relative">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#A58D66]/5 rounded-full blur-[100px] pointer-events-none" />
+    <section id="features" className="py-28 bg-[#083A4F]/60 border-y border-[#407E8C]/30 overflow-hidden relative">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#A58D66]/5 rounded-full blur-[140px] pointer-events-none" />
+
+      <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
+
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}
+          className="text-center mb-16"
+        >
+          <span className="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-[#A58D66] mb-4 px-4 py-1.5 rounded-full border border-[#A58D66]/30 bg-[#A58D66]/10">Features</span>
+          <h2 className="text-4xl font-bold mb-4 text-[#E5E1DD]">Everything you need to win</h2>
+          <p className="text-[#E5E1DD]/55 max-w-lg mx-auto text-base leading-relaxed">From finding gigs to closing contracts — AI handles the heavy lifting.</p>
+        </motion.div>
+
+        {/* ROW 1 — 3 equal cards */}
+        <motion.div
+          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4"
+        >
+          {/* Card: AI Matching */}
+          <motion.div variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22,1,0.36,1] } } }}>
+            <GlowCard className="p-6 flex flex-col h-full min-h-[300px]">
+              <div className="w-10 h-10 rounded-xl bg-[#A58D66]/15 text-[#A58D66] flex items-center justify-center mb-5">
+                <Brain className="w-5 h-5" />
+              </div>
+              <h3 className="text-lg font-bold text-[#E5E1DD] mb-2">AI Opportunity Matching</h3>
+              <p className="text-sm text-[#E5E1DD]/55 leading-relaxed mb-5">Scores every gig against your skills and preferences instantly.</p>
+              {/* Mockup */}
+              <div className="mt-auto space-y-2">
+                {[{ t: "Senior React Dev", s: 94 }, { t: "SaaS Engineer", s: 87 }, { t: "Frontend Lead", s: 79 }].map((item, i) => (
+                  <div key={i} className="flex items-center justify-between bg-[#083A4F]/70 border border-[#407E8C]/40 rounded-lg px-3 py-2">
+                    <span className="text-xs text-[#E5E1DD]/80 font-medium truncate mr-3">{item.t}</span>
+                    <div className="flex items-center gap-2 shrink-0">
+                      <div className="w-14 h-1.5 bg-[#407E8C]/30 rounded-full overflow-hidden">
+                        <div className="h-full bg-gradient-to-r from-[#A58D66] to-[#C1A77E] rounded-full" style={{ width: `${item.s}%` }} />
+                      </div>
+                      <span className="text-[11px] font-bold text-[#A58D66] w-7 text-right">{item.s}%</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </GlowCard>
+          </motion.div>
+
+          {/* Card: Smart Analysis */}
+          <motion.div variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22,1,0.36,1] } } }}>
+            <GlowCard className="p-6 flex flex-col h-full min-h-[300px]">
+              <div className="w-10 h-10 rounded-xl bg-[#A58D66]/15 text-[#A58D66] flex items-center justify-center mb-5">
+                <Target className="w-5 h-5" />
+              </div>
+              <h3 className="text-lg font-bold text-[#E5E1DD] mb-2">Smart Analysis</h3>
+              <p className="text-sm text-[#E5E1DD]/55 leading-relaxed mb-5">Understand complexity, skill gaps, and estimated effort before you apply.</p>
+              {/* Mockup */}
+              <div className="mt-auto space-y-2">
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="bg-[#083A4F]/70 border border-[#407E8C]/40 rounded-lg p-3 text-center">
+                    <p className="text-xl font-bold text-[#A58D66]">92%</p>
+                    <p className="text-[10px] text-[#E5E1DD]/45 mt-0.5">Match Score</p>
+                  </div>
+                  <div className="bg-[#083A4F]/70 border border-[#407E8C]/40 rounded-lg p-3 text-center">
+                    <p className="text-xl font-bold text-yellow-400">Med</p>
+                    <p className="text-[10px] text-[#E5E1DD]/45 mt-0.5">Complexity</p>
+                  </div>
+                </div>
+                <div className="bg-[#083A4F]/70 border border-[#407E8C]/40 rounded-lg p-3">
+                  <p className="text-[10px] text-[#E5E1DD]/40 uppercase font-semibold tracking-wider mb-2">Skills</p>
+                  <div className="flex gap-1.5 flex-wrap">
+                    <span className="px-2 py-0.5 text-[10px] bg-[#A58D66]/10 text-[#A58D66] border border-[#A58D66]/25 rounded-md font-medium">React ✓</span>
+                    <span className="px-2 py-0.5 text-[10px] bg-[#A58D66]/10 text-[#A58D66] border border-[#A58D66]/25 rounded-md font-medium">TS ✓</span>
+                    <span className="px-2 py-0.5 text-[10px] bg-red-500/10 text-red-400 border border-red-500/20 rounded-md font-medium">Web3 ✗</span>
+                  </div>
+                </div>
+              </div>
+            </GlowCard>
+          </motion.div>
+
+          {/* Card: Proposal Generator */}
+          <motion.div variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22,1,0.36,1] } } }}>
+            <GlowCard className="p-6 flex flex-col h-full min-h-[300px]">
+              <div className="w-10 h-10 rounded-xl bg-[#A58D66]/15 text-[#A58D66] flex items-center justify-center mb-5">
+                <FileText className="w-5 h-5" />
+              </div>
+              <h3 className="text-lg font-bold text-[#E5E1DD] mb-2">AI Proposal Generator</h3>
+              <p className="text-sm text-[#E5E1DD]/55 leading-relaxed mb-5">Personalized winning proposals drafted in seconds from your profile.</p>
+              {/* Mockup */}
+              <div className="mt-auto bg-[#083A4F]/70 border border-[#407E8C]/40 rounded-lg p-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <Sparkles className="w-3.5 h-3.5 text-[#A58D66]" />
+                  <span className="text-[11px] text-[#A58D66] font-semibold">AI is writing your proposal...</span>
+                </div>
+                <div className="space-y-2">
+                  <div className="h-2 bg-[#407E8C]/35 rounded-full w-full" />
+                  <div className="h-2 bg-[#407E8C]/35 rounded-full w-5/6" />
+                  <div className="h-2 bg-[#407E8C]/35 rounded-full w-full" />
+                  <div className="h-2 bg-[#407E8C]/20 rounded-full w-3/5" />
+                </div>
+                <div className="mt-3 flex justify-end">
+                  <span className="text-[10px] px-3 py-1 bg-[#A58D66]/20 text-[#A58D66] rounded-md border border-[#A58D66]/30 font-semibold cursor-pointer hover:bg-[#A58D66]/30 transition-colors">Copy Draft →</span>
+                </div>
+              </div>
+            </GlowCard>
+          </motion.div>
+        </motion.div>
+
+        {/* ROW 2 — 2 equal cards */}
+        <motion.div
+          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-4"
+        >
+          {/* Card: Application Tracker */}
+          <motion.div variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22,1,0.36,1] } } }}>
+            <GlowCard className="p-6 flex flex-col h-full min-h-[260px]">
+              <div className="w-10 h-10 rounded-xl bg-[#A58D66]/15 text-[#A58D66] flex items-center justify-center mb-5">
+                <CheckCircle2 className="w-5 h-5" />
+              </div>
+              <h3 className="text-lg font-bold text-[#E5E1DD] mb-2">Application Tracker</h3>
+              <p className="text-sm text-[#E5E1DD]/55 leading-relaxed mb-5">Your entire freelance pipeline — from saved to contract signed — in one place.</p>
+              {/* Pipeline */}
+              <div className="mt-auto grid grid-cols-4 gap-2">
+                {[
+                  { stage: "Saved", count: 12, bar: "bg-[#407E8C]/60" },
+                  { stage: "Applied", count: 7, bar: "bg-[#A58D66]/70" },
+                  { stage: "Interview", count: 3, bar: "bg-yellow-400/70" },
+                  { stage: "Won", count: 1, bar: "bg-green-400/70" },
+                ].map((s, i) => (
+                  <div key={i} className="bg-[#083A4F]/70 border border-[#407E8C]/40 rounded-lg p-3 text-center">
+                    <p className="text-2xl font-bold text-[#E5E1DD]">{s.count}</p>
+                    <div className={`w-full h-0.5 ${s.bar} rounded-full my-1.5`} />
+                    <p className="text-[9px] text-[#E5E1DD]/45 font-medium uppercase tracking-wide">{s.stage}</p>
+                  </div>
+                ))}
+              </div>
+            </GlowCard>
+          </motion.div>
+
+          {/* Card: Analytics */}
+          <motion.div variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22,1,0.36,1] } } }}>
+            <GlowCard className="p-6 flex flex-col h-full min-h-[260px]">
+              <div className="w-10 h-10 rounded-xl bg-[#A58D66]/15 text-[#A58D66] flex items-center justify-center mb-5">
+                <LineChart className="w-5 h-5" />
+              </div>
+              <h3 className="text-lg font-bold text-[#E5E1DD] mb-2">Performance Analytics</h3>
+              <p className="text-sm text-[#E5E1DD]/55 leading-relaxed mb-5">Track match rates, response rates, and earnings to sharpen your approach over time.</p>
+              {/* Bar chart */}
+              <div className="mt-auto bg-[#083A4F]/70 border border-[#407E8C]/40 rounded-lg p-4">
+                <div className="flex items-end gap-1.5 h-16">
+                  {[40, 60, 45, 75, 65, 90, 80].map((h, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ scaleY: 0 }}
+                      whileInView={{ scaleY: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: i * 0.07, ease: "easeOut" }}
+                      style={{ height: `${h}%`, transformOrigin: "bottom" }}
+                      className="flex-1 bg-gradient-to-t from-[#407E8C]/50 to-[#A58D66]/60 rounded-t-sm"
+                    />
+                  ))}
+                </div>
+                <div className="flex justify-between mt-2">
+                  {["M","T","W","T","F","S","S"].map((d, i) => (
+                    <span key={i} className="flex-1 text-center text-[9px] text-[#E5E1DD]/30">{d}</span>
+                  ))}
+                </div>
+              </div>
+            </GlowCard>
+          </motion.div>
+        </motion.div>
+
+      </div>
+    </section>
+  );
+}
+
       
       <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold mb-4">Powerful Features</h2>
-          <p className="text-[#E5E1DD]/70 max-w-2xl mx-auto">Everything you need to turn freelance hunting into a streamlined, high-converting process.</p>
+          <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-[#A58D66] mb-4 px-3 py-1 rounded-full border border-[#A58D66]/30 bg-[#A58D66]/10">Features</span>
+          <h2 className="text-4xl font-bold mb-4">Everything you need to win</h2>
+          <p className="text-[#E5E1DD]/60 max-w-xl mx-auto text-lg">From finding to closing — AI handles the heavy lifting so you can focus on the work.</p>
         </motion.div>
 
-        {/* 7. BENTO GRID */}
         <motion.div 
-          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}
-          variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 grid-flow-row-dense"
+          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.05 }}
+          variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.12 } } }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-5"
         >
-          {features.map((f, i) => (
-            <motion.div 
-              key={i} 
-              variants={{ hidden: { opacity: 0, scale: 0.95, y: 40 }, visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } } }} 
-              className={`${f.colSpan} ${f.rowSpan} h-full flex`}
-            >
-              {/* 8. CARD HOVER GLOW & 13. CURSOR-FOLLOWING GLOW */}
-              <GlowCard className="w-full p-8 flex flex-col justify-start">
-                <div className="w-12 h-12 bg-[#A58D66]/10 text-[#A58D66] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
-                  {f.icon}
+          {/* CARD 1 — AI Matching (large, 2 cols) */}
+          <motion.div 
+            variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22,1,0.36,1] } } }}
+            className="md:col-span-2"
+          >
+            <GlowCard className="p-7 h-full flex flex-col min-h-[340px]">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-9 h-9 bg-[#A58D66]/15 text-[#A58D66] rounded-lg flex items-center justify-center"><Brain className="w-5 h-5" /></div>
+                <span className="text-xs font-semibold uppercase tracking-widest text-[#A58D66]">AI Opportunity Matching</span>
+              </div>
+              <h3 className="text-2xl font-bold mb-2 text-[#E5E1DD]">Find perfect-fit gigs instantly</h3>
+              <p className="text-sm text-[#E5E1DD]/60 mb-6 leading-relaxed">Our AI scores every opportunity against your profile, skills, and preferences — no more guessing.</p>
+              {/* Mini UI Mockup */}
+              <div className="mt-auto bg-[#083A4F]/80 rounded-xl border border-[#407E8C]/40 overflow-hidden">
+                {/* Header bar */}
+                <div className="flex items-center gap-2 px-4 py-3 border-b border-[#407E8C]/30">
+                  <div className="w-2 h-2 rounded-full bg-red-400/60" />
+                  <div className="w-2 h-2 rounded-full bg-yellow-400/60" />
+                  <div className="w-2 h-2 rounded-full bg-[#A58D66]/60" />
+                  <span className="ml-2 text-[10px] text-[#E5E1DD]/40 font-mono">ai-matches.tsx</span>
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-[#E5E1DD]">{f.title}</h3>
-                <p className="text-sm text-[#E5E1DD]/70 leading-relaxed">{f.desc}</p>
-              </GlowCard>
-            </motion.div>
-          ))}
+                <div className="p-4 space-y-2">
+                  {[
+                    { title: "Senior React Developer", score: 94, tag: "Upwork" },
+                    { title: "Full-Stack SaaS Engineer", score: 87, tag: "Toptal" },
+                    { title: "Frontend Architect", score: 81, tag: "Remote" },
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center justify-between bg-[#407E8C]/20 rounded-lg px-3 py-2.5 border border-[#407E8C]/30">
+                      <div className="flex items-center gap-3">
+                        <div className="w-7 h-7 rounded-md bg-[#A58D66]/20 flex items-center justify-center">
+                          <Briefcase className="w-3.5 h-3.5 text-[#A58D66]" />
+                        </div>
+                        <div>
+                          <p className="text-xs font-semibold text-[#E5E1DD]">{item.title}</p>
+                          <p className="text-[10px] text-[#E5E1DD]/50">{item.tag}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-16 h-1.5 bg-[#407E8C]/40 rounded-full overflow-hidden">
+                          <div className="h-full bg-gradient-to-r from-[#A58D66] to-[#C1A77E] rounded-full" style={{ width: `${item.score}%` }} />
+                        </div>
+                        <span className="text-xs font-bold text-[#A58D66] w-8 text-right">{item.score}%</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </GlowCard>
+          </motion.div>
+
+          {/* CARD 2 — Smart Analysis */}
+          <motion.div 
+            variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22,1,0.36,1] } } }}
+          >
+            <GlowCard className="p-7 h-full flex flex-col min-h-[340px]">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-9 h-9 bg-[#A58D66]/15 text-[#A58D66] rounded-lg flex items-center justify-center"><Target className="w-5 h-5" /></div>
+                <span className="text-xs font-semibold uppercase tracking-widest text-[#A58D66]">Smart Analysis</span>
+              </div>
+              <h3 className="text-xl font-bold mb-2 text-[#E5E1DD]">X-ray every job post</h3>
+              <p className="text-sm text-[#E5E1DD]/60 mb-5 leading-relaxed">Know your strengths, skill gaps, complexity, and estimated effort before you apply.</p>
+              {/* Mini Stat Grid */}
+              <div className="mt-auto grid grid-cols-2 gap-2">
+                <div className="bg-[#083A4F]/80 border border-[#407E8C]/40 rounded-xl p-3 text-center">
+                  <p className="text-2xl font-bold text-[#A58D66]">92%</p>
+                  <p className="text-[10px] text-[#E5E1DD]/50 mt-0.5">Match Score</p>
+                </div>
+                <div className="bg-[#083A4F]/80 border border-[#407E8C]/40 rounded-xl p-3 text-center">
+                  <p className="text-2xl font-bold text-yellow-400">Med</p>
+                  <p className="text-[10px] text-[#E5E1DD]/50 mt-0.5">Complexity</p>
+                </div>
+                <div className="col-span-2 bg-[#083A4F]/80 border border-[#407E8C]/40 rounded-xl p-3">
+                  <p className="text-[10px] text-[#E5E1DD]/50 mb-1.5 uppercase font-semibold tracking-wider">Skill Gaps</p>
+                  <div className="flex gap-1.5 flex-wrap">
+                    <span className="px-2 py-0.5 text-[10px] bg-red-500/10 text-red-400 border border-red-500/20 rounded font-medium">Web3.js</span>
+                    <span className="px-2 py-0.5 text-[10px] bg-[#A58D66]/10 text-[#A58D66] border border-[#A58D66]/20 rounded font-medium">React ✓</span>
+                    <span className="px-2 py-0.5 text-[10px] bg-[#A58D66]/10 text-[#A58D66] border border-[#A58D66]/20 rounded font-medium">TS ✓</span>
+                  </div>
+                </div>
+              </div>
+            </GlowCard>
+          </motion.div>
+
+          {/* CARD 3 — AI Proposal Generator */}
+          <motion.div 
+            variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22,1,0.36,1] } } }}
+          >
+            <GlowCard className="p-7 h-full flex flex-col">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-9 h-9 bg-[#A58D66]/15 text-[#A58D66] rounded-lg flex items-center justify-center"><FileText className="w-5 h-5" /></div>
+                <span className="text-xs font-semibold uppercase tracking-widest text-[#A58D66]">Proposal Generator</span>
+              </div>
+              <h3 className="text-xl font-bold mb-2 text-[#E5E1DD]">Write winning proposals in seconds</h3>
+              <p className="text-sm text-[#E5E1DD]/60 mb-4 leading-relaxed">AI drafts personalized proposals based on the job and your exact profile.</p>
+              {/* Typewriter mockup */}
+              <div className="mt-auto bg-[#083A4F]/80 rounded-xl border border-[#407E8C]/40 p-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-5 h-5 rounded-full bg-[#A58D66]/20 flex items-center justify-center">
+                    <Sparkles className="w-3 h-3 text-[#A58D66]" />
+                  </div>
+                  <span className="text-[10px] text-[#A58D66] font-semibold">AI generating proposal...</span>
+                </div>
+                <div className="space-y-1.5">
+                  <div className="h-2 bg-[#407E8C]/40 rounded-full w-full" />
+                  <div className="h-2 bg-[#407E8C]/40 rounded-full w-4/5" />
+                  <div className="h-2 bg-[#407E8C]/40 rounded-full w-full" />
+                  <div className="h-2 bg-[#407E8C]/30 rounded-full w-3/5" />
+                </div>
+                <div className="mt-3 flex justify-end">
+                  <span className="text-[10px] px-2 py-1 bg-[#A58D66]/20 text-[#A58D66] rounded-md border border-[#A58D66]/30 font-semibold">Copy Draft →</span>
+                </div>
+              </div>
+            </GlowCard>
+          </motion.div>
+
+          {/* CARD 4 — Application Tracker */}
+          <motion.div 
+            variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22,1,0.36,1] } } }}
+            className="md:col-span-2"
+          >
+            <GlowCard className="p-7 h-full flex flex-col">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-9 h-9 bg-[#A58D66]/15 text-[#A58D66] rounded-lg flex items-center justify-center"><CheckCircle2 className="w-5 h-5" /></div>
+                <span className="text-xs font-semibold uppercase tracking-widest text-[#A58D66]">Application Tracker</span>
+              </div>
+              <h3 className="text-xl font-bold mb-2 text-[#E5E1DD]">Your entire pipeline in one view</h3>
+              <p className="text-sm text-[#E5E1DD]/60 mb-5 leading-relaxed">Track every application from saved → applied → interview → contract signed.</p>
+              {/* Pipeline mockup */}
+              <div className="mt-auto grid grid-cols-4 gap-2">
+                {[
+                  { stage: "Saved", count: 12, color: "border-[#407E8C]/60 bg-[#407E8C]/10" },
+                  { stage: "Applied", count: 7, color: "border-[#A58D66]/60 bg-[#A58D66]/10" },
+                  { stage: "Interview", count: 3, color: "border-yellow-500/60 bg-yellow-500/10" },
+                  { stage: "Accepted", count: 1, color: "border-green-500/60 bg-green-500/10" },
+                ].map((s, i) => (
+                  <div key={i} className={`rounded-xl border ${s.color} p-3 text-center`}>
+                    <p className="text-xl font-bold text-[#E5E1DD]">{s.count}</p>
+                    <p className="text-[10px] text-[#E5E1DD]/50 mt-0.5">{s.stage}</p>
+                  </div>
+                ))}
+              </div>
+            </GlowCard>
+          </motion.div>
+
+          {/* CARD 5 — Analytics (full width) */}
+          <motion.div 
+            variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22,1,0.36,1] } } }}
+            className="md:col-span-3"
+          >
+            <GlowCard className="p-7 flex flex-col md:flex-row gap-8 items-center">
+              <div className="md:w-1/3">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-9 h-9 bg-[#A58D66]/15 text-[#A58D66] rounded-lg flex items-center justify-center"><LineChart className="w-5 h-5" /></div>
+                  <span className="text-xs font-semibold uppercase tracking-widest text-[#A58D66]">Analytics</span>
+                </div>
+                <h3 className="text-xl font-bold mb-2 text-[#E5E1DD]">Data-driven freelancing</h3>
+                <p className="text-sm text-[#E5E1DD]/60 leading-relaxed">Understand your match rates, response rates, and optimize your approach over time.</p>
+              </div>
+              {/* Bar chart mockup */}
+              <div className="md:w-2/3 bg-[#083A4F]/80 rounded-xl border border-[#407E8C]/40 p-5">
+                <div className="flex items-end gap-2 h-24 justify-between">
+                  {[45, 65, 50, 80, 70, 92, 85].map((h, i) => (
+                    <div key={i} className="flex-1 flex flex-col items-center gap-1">
+                      <motion.div 
+                        initial={{ height: 0 }} whileInView={{ height: `${h}%` }} viewport={{ once: true }} transition={{ duration: 0.8, delay: i * 0.08, ease: "easeOut" }}
+                        className="w-full rounded-t-md bg-gradient-to-t from-[#407E8C]/60 to-[#A58D66]/70"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div className="flex justify-between mt-2">
+                  {["Mon","Tue","Wed","Thu","Fri","Sat","Sun"].map(d => (
+                    <span key={d} className="flex-1 text-center text-[9px] text-[#E5E1DD]/30 font-medium">{d}</span>
+                  ))}
+                </div>
+              </div>
+            </GlowCard>
+          </motion.div>
+
         </motion.div>
       </div>
     </section>
